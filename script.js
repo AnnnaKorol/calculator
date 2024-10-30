@@ -75,6 +75,20 @@ let input = "";
 let signThen; //key to obj that contains an operation sign, e.g. “+”, “-”, “*”, “/”.
 let calculationComplete = false; // New flag for completed calculation
 
+//*------------------------------------------
+
+// Handlers for inputting "numbers" and "operators"                                                                          //!Number and operator buttons
+document
+  .querySelectorAll(".number")
+  .forEach((button) =>
+    button.addEventListener("click", () => handleInput(button.textContent))
+  );
+document
+  .querySelectorAll(".operator")
+  .forEach((button) =>
+    button.addEventListener("click", () => processOperator(button.textContent))
+  );
+
 //*--------------------------------------------------------------------------------------------------------------------
 // Unified input handling for numbers and operators
 function handleInput(character) {
@@ -95,38 +109,6 @@ function handleInput(character) {
   input += character;
   updateDisplay();
 }
-
-//*------------------------------------------
-
-// Handlers for inputting "numbers" and "operators"                                                                          //!Number and operator buttons
-document
-  .querySelectorAll(".number")
-  .forEach((button) =>
-    button.addEventListener("click", () => handleInput(button.textContent))
-  );
-document
-  .querySelectorAll(".operator")
-  .forEach((button) =>
-    button.addEventListener("click", () => processOperator(button.textContent))
-  );
-
-//*--------------------------------------------------------------------------------------------------------------------
-
-// Adding keystroke handling for inputs                                                                                      //!Keystroke handling
-window.addEventListener("keydown", (event) => {
-  const key = event.key;
-  if (!isNaN(key) || key === ".") {
-    handleInput(key);
-  } else if (Object.keys(operations).includes(key)) {
-    processOperator(key);
-  } else if (key === "Enter" || key === "=") {
-    calculateResult();
-  } else if (key === "Backspace") {
-    clearEntry();
-  } else if (key === "Escape") {
-    clearAll();
-  }
-});
 
 //*--------------------------------------------------------------------------------------------------------------------
 
@@ -149,6 +131,24 @@ function processOperator(operator) {
   signThen = operator;
   updateDisplay();
 }
+
+//*--------------------------------------------------------------------------------------------------------------------
+
+// Adding keystroke handling for inputs                                                                                      //!Keystroke handling
+window.addEventListener("keydown", (event) => {
+  const key = event.key;
+  if (!isNaN(key) || key === ".") {
+    handleInput(key);
+  } else if (Object.keys(operations).includes(key)) {
+    processOperator(key);
+  } else if (key === "Enter" || key === "=") {
+    calculateResult();
+  } else if (key === "Backspace") {
+    clearEntry();
+  } else if (key === "Escape") {
+    clearAll();
+  }
+});
 
 //*--------------------------------------------------------------------------------------------------------------------
 // 13) Add a “backspace” button, so the user can undo if they click the wrong number.
