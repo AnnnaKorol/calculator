@@ -43,15 +43,15 @@ const operations = {
   "*": (n1, n2) =>
     parseFloat(
       (n1 * n2).toFixed(5)
-    ) /* parseFloat - take only numbers and .toFixed(10) will take 10 bumbers after . */,
+    ) /* parseFloat - take only numbers and .toFixed(10) will take 10 numbers after . */,
   "÷": (n1, n2) =>
     n2 === 0
       ? "ERROR"
       : parseFloat(
           (n1 / n2).toFixed(5)
         ) /* parseFloat - take only numbers and .toFixed(10) will take 10 bumbers after . */,
-  "%": (n1, n2) => (n2 === 0 ? "ERROR" : n1 % n2),
   "/": (n1, n2) => (n2 === 0 ? "ERROR" : n1 / n2),
+  "%": (n1, n2) => (n2 === 0 ? "ERROR" : n1 % n2),
 };
 
 //*--------------------------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ document
 // Unified input handling for numbers and operators
 function handleInput(character) {
   if (calculationComplete || result.textContent === "ERROR") {
-    input = "";
+    input= "";
     calculationComplete = false;
     result.textContent = "";
   }
@@ -117,6 +117,7 @@ function processOperator(operator) {
   // If the calculation is completed, allow only operator input and clear
   if (calculationComplete || result.textContent === "ERROR") {
     calculationComplete = false;
+
     if (result.textContent !== "ERROR") {
       storedValue = parseFloat(result.textContent);
     }
