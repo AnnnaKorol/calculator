@@ -51,6 +51,7 @@ const operations = {
           (n1 / n2).toFixed(5)
         ) /* parseFloat - take only numbers and .toFixed(10) will take 10 bumbers after . */,
   "%": (n1, n2) => (n2 === 0 ? "ERROR" : n1 % n2),
+  "/": (n1, n2) => (n2 === 0 ? "ERROR" : n1 / n2),
 };
 
 //*--------------------------------------------------------------------------------------------------------------------
@@ -136,10 +137,11 @@ function processOperator(operator) {
 
 // Adding keystroke handling for inputs                                                                                      //!Keystroke handling
 window.addEventListener("keydown", (event) => {
+  // event.preventDefault()
   const key = event.key;
   if (!isNaN(key) || key === ".") {
     handleInput(key);
-  } else if (Object.keys(operations).includes(key)) {
+  } else if (["+", "-", "*", "/", "÷", "%"].includes(key)) {
     processOperator(key);
   } else if (key === "Enter" || key === "=") {
     calculateResult();
