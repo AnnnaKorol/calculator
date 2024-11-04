@@ -33,7 +33,8 @@
      an operator,                                                                //add className="operator"
       and another number;  
  8)Round answers with long decimals so that they don’t overflow the screen.
-11)Display an error message if the user tries to divide by 0 
+11)Display an error message if the user tries to divide by
+skfjesjfoijedgf0
 12) 12.3.56.5. It is hard to do math on these numbers. (disable the decimal button if there’s already one in the display) */
 
 /* 1) Arithmetic functions in object "operations" */ //!Arithmetic functions
